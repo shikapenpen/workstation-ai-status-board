@@ -1,0 +1,113 @@
+/* ゼミ室 利用状況ボード — かわいいスタイル
+ * 色や大きさはここで調整できます。board.py には触りません。
+ * 編集して保存すると、ブラウザの次の自動更新で反映されます。
+ *
+ * パステルの主要カラー:
+ *   #FFD6E8 = ピンク（ラベル）
+ *   #9BE3BE = ミント（実行中）
+ *   #FFCBA4 = ピーチ（待ち）
+ *   #6B4C7A = タイトルの紫
+ */
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap');
+
+/* 全体の背景をやさしいパステルに（ダークモードでも統一） */
+.stApp,
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(160deg, #FFF3F8 0%, #FBEEFF 45%, #EEF4FF 100%) !important;
+    font-family: "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", "Quicksand", system-ui, sans-serif;
+}
+
+/* 上のツールバー（Deploy など）を隠してスッキリ */
+[data-testid="stToolbar"] { display: none !important; }
+[data-testid="stHeader"] { background: transparent !important; }
+#MainMenu { display: none !important; }
+
+/* タイトル */
+.stApp h1 {
+    font-family: "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", sans-serif;
+    color: #6B4C7A !important;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+/* 全体の文字色（やさしい紫グレー） */
+.stApp, .stApp p, .stApp span, .stApp div {
+    color: #5A4A66;
+}
+
+/* セクション見出しのまるいラベル */
+.section-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: #FFD6E8;
+    color: #A14A6E !important;
+    padding: 0.35rem 1.1rem;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 6px rgba(255, 150, 190, 0.35);
+}
+
+/* 大きな数字 */
+.big-stat {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 3.6rem;
+    font-weight: 800;
+    line-height: 1.0;
+}
+
+/* モデルのカード */
+.model-card {
+    background: #FFFFFF;
+    border: 2px solid #F2E2EC;
+    border-radius: 22px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 0.9rem;
+    box-shadow: 0 6px 18px rgba(180, 140, 200, 0.12);
+}
+.model-card.busy {
+    border-color: #9BE3BE;
+    background: linear-gradient(180deg, #F2FFF8 0%, #FFFFFF 100%);
+    box-shadow: 0 6px 20px rgba(120, 220, 170, 0.25);
+}
+.model-card.queue {
+    border-color: #FFCBA4;
+    background: linear-gradient(180deg, #FFF6EE 0%, #FFFFFF 100%);
+    box-shadow: 0 6px 20px rgba(255, 180, 130, 0.22);
+}
+
+.model-title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #5A4A66 !important;
+}
+.model-sub { font-size: 0.9rem; color: #B0A0BC !important; }
+
+/* 同時◯まで のバッジ */
+.limit-badge {
+    float: right;
+    font-size: 0.8rem;
+    color: #9A7AA8 !important;
+    background: #F3EAF8;
+    padding: 0.2rem 0.75rem;
+    border-radius: 999px;
+}
+
+/* 実行中の行 */
+.run-line {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2B9E6B !important;
+    margin-top: 0.5rem;
+}
+/* 待ちの行 */
+.wait-line { font-size: 1.05rem; color: #E08A4B !important; }
+/* 空き */
+.idle-line { font-size: 1.1rem; color: #C0B2CC !important; margin-top: 0.5rem; }
+
+/* 実行中のふんわり点滅 */
+.pulse { animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse {
+    0%, 100% { opacity: 1.0; }
+    50% { opacity: 0.6; }
+}
